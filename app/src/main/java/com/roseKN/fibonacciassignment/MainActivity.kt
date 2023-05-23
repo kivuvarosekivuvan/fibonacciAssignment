@@ -5,29 +5,33 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
+class NumFib(one: Long) {
+
+
+}
 class Main : AppCompatActivity() {
-    lateinit var recyclerview= RecyclerView
+    lateinit var recyclerview: RecyclerView
     lateinit var adapter:NumsRvAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        recyclerview.findViewById(R.id.tvRecycler)
-        recyclerview.layoutManager = LinearLayoutManager(this)
-:
+        recyclerview = findViewById(R.id.rv)
+        recyclerview.layoutManager = LinearLayoutManager(this@Main)
+
         val numFibonacci= getnumFibonacci(100)
-        adapter = RvAdapter(numFibonacci)
+        adapter = NumsRvAdapter(numFibonacci)
         recyclerview.adapter = adapter
 
     }
-    fun getnumFibonacci(count:Int): List<FibonacciNumber>{
-        val nums= mutableListOf<FibonacciNumber>()
+    fun getnumFibonacci(count:Int): List<NumFib>{
+        val nums= mutableListOf<NumFib>()
 
         var one=0L
         var two=1L
 
         repeat(count){
-            nums.add(numFibonacci(one))
+            nums.add(NumFib(one))
             val three = one+two
             one=two
             two=three
